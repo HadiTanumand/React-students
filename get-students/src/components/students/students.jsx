@@ -5,6 +5,8 @@ const Students = () => {
   return ( 
   <>
   <Student />
+  <Student />
+  <Student />
   </> 
   );
 }
