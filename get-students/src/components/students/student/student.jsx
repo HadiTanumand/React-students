@@ -1,5 +1,6 @@
 import React from 'react';
 import './student.css';
+import Button from './../../UI/button/button';
 
 const Student = (props) => {
   return (
@@ -18,8 +19,13 @@ const Student = (props) => {
             <label>ایمیل</label>
             <input type="email"value={props.email} />
 
-            <label style={{color:'red'}} onClick={props.deleted}>
-              حذف
+            <label >
+              <Button
+              btnType='danger'
+              clicked={props.deleted}
+              >
+                حذف
+              </Button>
             </label>
             
         </div>
