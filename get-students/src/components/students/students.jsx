@@ -9,6 +9,8 @@ const Students = (props) => {
   name={student.name}
   phone={student.phone}
   email={student.email}
+  nameChanged={(event)=>props.nameChanged(event,student.id)}
+  deleted={props.deleted}
   />)
   );
 }
