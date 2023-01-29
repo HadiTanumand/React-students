@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import Students from './components/students/students';
+import Button from './components/UI/button/button';
 const App = () => {
   const [studentsState , setStudents] = useState([
     {id:1,name:'ali',phone:123 , email:'ali@gmail'},
@@ -7,6 +8,7 @@ const App = () => {
     {id:3,name:'mohammad',phone:123 , email:'mohammad@gmail'},
     {id:4,name:'mahdi',phone:123 , email:'mahdi@gmail'},
   ])
+  const [toggle , setToggle] = useState(false);
 
   const nameChangedHandler = (event,id)=>{
    const studentIndex = studentsState.findIndex((student)=>{
@@ -24,8 +26,19 @@ const App = () => {
     setStudents(students)
   }
 
+  const toggleHandler =()=>{
+    setToggle(!toggle)
+    console.log(toggle);
+  }
+
   return ( 
   <>
+  <Button 
+  btnType='success'
+  clicked={toggleHandler}
+  >
+    تغییر نمایش وضعیت
+  </Button>
   <Students 
   studentList={studentsState}
   nameChanged={nameChangedHandler}
