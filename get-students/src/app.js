@@ -42,7 +42,8 @@ const App = () => {
   <Students 
   studentList={studentsState}
   nameChanged={nameChangedHandler}
-  deleted={deleteHandler}  
+  deleted={deleteHandler} 
+  toggle={toggle} 
   />
   </> );
 }
