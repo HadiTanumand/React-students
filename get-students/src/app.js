@@ -21,7 +21,6 @@ const App = () => {
     const itemData = arrayHolder.filter((item)=>{
       const itemData = item.name.toUpperCase();
       const textData = event.target.value.toUpperCase();
-      // console.log(itemData.indexOf(textData)>-1);
       return itemData.indexOf(textData)>-1
       
     })
@@ -47,7 +46,6 @@ const App = () => {
 
   const toggleHandler =()=>{
     setToggle(!toggle)
-    console.log(toggle);
   }
 
   return ( 
