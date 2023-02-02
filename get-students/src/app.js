@@ -1,8 +1,9 @@
-import React,{useState , useEffect} from 'react';
+import React,{useState , useEffect , useRef} from 'react';
 import Students from './components/students/students';
 import Button from './components/UI/button/button';
 import "./app.css"
 const App = () => {
+  const Elm1 = useRef(null);
   const [studentsState , setStudents] = useState([
     {id:1,name:'ali',phone:123 , email:'ali@gmail'},
     {id:2,name:'hadi',phone:123 , email:'hadi@gmail'},
@@ -14,7 +15,8 @@ const App = () => {
   const [searchBarValue , setSearchBarValue] = useState('');
 
   useEffect(()=>{
-    setArrayHolder(studentsState)
+    setArrayHolder(studentsState);
+    Elm1.current.focus();
   },[])
 
   const searchFilterFunction =(event)=>{
@@ -48,9 +50,13 @@ const App = () => {
     setToggle(!toggle)
   }
 
+  const getScroll = ()=>{
+    window.scroll(0,0);
+  }
+
   return ( 
   <>
-  <input type="text" value={searchBarValue} onChange={searchFilterFunction} className="search-bar"/>
+  <input type="text" value={searchBarValue} onChange={searchFilterFunction} className="search-bar" ref={Elm1}/>
   <Button 
   btnType='success'
   clicked={toggleHandler}
@@ -63,6 +69,12 @@ const App = () => {
   deleted={deleteHandler} 
   toggle={toggle} 
   />
+   <Button 
+  btnType='success'
+  clicked={getScroll}
+  >
+    scroll to top
+  </Button>
   </> );
 }
  
