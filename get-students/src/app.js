@@ -55,27 +55,31 @@ const App = () => {
   }
 
   return ( 
-  <>
-  <input type="text" value={searchBarValue} onChange={searchFilterFunction} className="search-bar" ref={Elm1}/>
-  <Button 
-  btnType='success'
-  clicked={toggleHandler}
-  >
-    تغییر نمایش وضعیت
-  </Button>
-  <Students 
-  studentList={studentsState}
-  nameChanged={nameChangedHandler}
-  deleted={deleteHandler} 
-  toggle={toggle} 
-  />
-   <Button 
-  btnType='success'
-  clicked={getScroll}
-  >
-    scroll to top
-  </Button>
-  </> );
+    <BrowserRouter>
+    <AuthContextProvider >
+        <StudentsContextProvider>          
+          <div className="App" style={{background:theme.bg,color:theme.syntax}}> 
+            <Toolbar />
+            
+              <Switch>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/add-student" exact render={()=>(
+                  <Suspense fallback={<p>...loading</p>}>
+                    <AddStudent />
+                  </Suspense>)} 
+                />
+                <Route path="/student/:studentid" exact component={EditStudent} />
+                <Route render={()=><h1>not Found</h1>} />
+              </Switch>
+              
+              
+            
+            
+        </div>
+      </StudentsContextProvider>
+    </AuthContextProvider>
+    
+  </BrowserRouter> );
 }
  
 export default App;
